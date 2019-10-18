@@ -1,0 +1,64 @@
+{% extends "tasks/base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'tasks:css/blog.css' %}">
+    <script type="text/javascript">
+        function hideshow(){
+            var pswinput = document.getElementById("password");
+            if (document.getElementById('hideshowpsw').checked==true){
+                pswinput.type = "text";
+            }else {
+                pswinput.type = "password";
+            }
+        }
+    </script>
+    <style>
+    #div{
+        width: 400px;
+        height: 100px;
+        /*background: red;*/
+        position: absolute;
+        left: -webkit-calc(50% - 200px);
+        top: -webkit-calc(50% - 50px);
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="col-xs-offset-2 col-sm-offset-4 col-md-offset-4 col-xs-8 col-sm-4 col-md-4" style="margin-top:130px;">
+        <form class="form-horizontal" role="form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                </div>
+                <input id="username" class="form-control" type="text" name="username" value="{{username}}" placeholder="用户名">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </div>
+                <input id="password" class="form-control" type="password" name="password" value="{{password}}" placeholder="密码">
+            </div>
+            <div class="form-group check-box">
+                <label>
+                    <input type="checkbox" id="hideshowpsw" onchange="hideshow()">&nbsp;&nbsp;显示密码
+                </label>
+            </div>
+            <div class="form-group">
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    Your username and password didn't match. Please try again.
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary btn-block">登录</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends 'tasks/base.html' %}
+{% block title %}爬虫练习{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="jumbotron lab-jumbotron" style="background-image: url({% static 'tasks/img/office-581131_1920.jpg' %})">
+        <div class="container">
+            <div class="lab-title">
+                <h1>编程教室精选文章</h1>
+                <h2>编程世界的进阶之路</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="text-center">文章列表</h2>
+        <div class="row">
+            <div class="x"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row lab-row">
+            <hr>
+            {% for item in items %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="lab-block">
+                    <a class="lab-inner-block" href="{% url 'tasks:article_one' item.id %}">
+                        <div class="lab-img">
+                            <img src="{{ item.image }}" alt="{{ item.title }}" class="lab-img-width">
+                        </div>
+                        <h3 class="text-center">{{ item.title }}</h3>
+                        <p class="text-center">{{ item.abstract }}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

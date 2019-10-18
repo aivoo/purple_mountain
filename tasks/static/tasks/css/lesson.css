@@ -1,0 +1,105 @@
+.lab-title{
+    margin-top: 60px;
+    color: white;
+}
+.lab-jumbotron{
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    min-height: 400px;
+}
+
+.lab-text{
+    font-size: 22px;
+}
+
+.lab-img{
+    width: 260px;
+    height: 180px;
+    margin: 0 auto;
+}
+.lab-img-width{
+    width: 100%;
+}
+
+.lab-block{
+    padding: 10px 10px ;
+    margin-bottom: 10px;
+}
+.lab-inner-block{
+    margin: 0 auto;
+    width: 264px;
+    height:320px;
+    border: 1px solid #B8B8B8;
+    display: block;
+}
+.lab-inner-block:hover{
+    text-decoration-line: none;
+    box-shadow: 5px 5px 10px #999999;
+}
+
+.lab-row{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.lab-footer-row{
+    padding: 20px 20px;
+    background-color: #2c3e50;
+    color: #fff;
+    min-height: 200px;
+}
+.lab-ft-img{
+    max-width: 200px;
+}
+
+.ppx-main-block{
+    min-height: 500px;
+    padding: 20px 20px;
+    font-size: 16px;
+}
+
+.mobile-main{
+    width: 100%;
+    font-size: 16px;
+}
+
+.flex-text{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.ppx-main-block embed{
+    margin:10px auto;
+}
+
+.scan-img{
+    width: 60%;
+}
+
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+header{
+   /* 我们希望 header 采用固定的高度，只占用必须的空间 */
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+}
+main{
+   /* 将 flex-grow 设置为1，该元素会占用全部可使用空间
+      而其他元素该属性值为0，因此不会得到多余的空间*/
+   /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 1 0 auto;
+}
+.lab-footer{
+    margin-top: 20px;
+    flex: 0 0 auto;
+}

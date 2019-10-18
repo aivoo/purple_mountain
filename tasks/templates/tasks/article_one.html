@@ -1,0 +1,56 @@
+{% extends 'tasks/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <style>
+        h2 { text-align: center; }
+    </style>
+
+    <script>
+        var readcount = '{{ readcount }}';
+        var join_str = '{{ join_str }}'
+        var num_list = '{{ num_list }}'
+    </script>
+
+    <script src="{% static 'tasks/js/tutorial.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <br />
+                <h2>{{item.title}}</h2>
+                <br />
+                <h5 style="display: flex; justify-content: space-around;">
+                    {% if readcount %}
+                    <span>阅读数：<span id="try-it"></span></span>
+                    <span class="num">点赞数：{{ likecount|safe }}</span>
+                    <span class="num">评论数：{{ commentcount|safe }}</span>
+                    {% else %}
+                    <span>阅读数：{{item.readcount}}</span>
+                    <span>点赞数：{{item.likecount}}</span>
+                    <span>评论数：{{item.commentcount}}</span>
+                    {% endif %}
+                </h5>
+                <div class="ppx-main-block">
+                    {{ item.content|safe }}
+                </div>
+
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li class="previous">{% if last %}<a href="../{{last.id}}"><span aria-hidden="true">&larr;</span> {{last.index}}.{{last.title}}</a>{% endif %}</li>
+                        <li><a href="../list">返回首页</a></li>
+                        <li class="next">{% if next %}<a href="../{{next.id}}">{{next.index}}.{{next.title}} <span aria-hidden="true">&rarr;</span></a>{% endif %}</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        </div>
+    </div>
+    <script>$("#try-it").replaceWith(str_end)</script>
+{% endblock %}
