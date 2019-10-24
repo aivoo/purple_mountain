@@ -54,6 +54,7 @@ class TaskList(models.Model):
     index = models.IntegerField('序号', unique=True)
     content = models.TextField('内容')
     url = models.CharField('url', max_length=100)
+    exist = models.BooleanField('是否存在', default=True)
 
     class Meta:
         ordering = ['index']

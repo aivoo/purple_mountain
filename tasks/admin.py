@@ -20,7 +20,7 @@ class HostInfoAdmin(admin.ModelAdmin):
 
 class TaskListAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'title', 'index', 'content', 'url')
+    list_display = ('id', 'title', 'index', 'content', 'url', 'exist')
 
 
 admin.site.register(Article, ArticleAdmin)

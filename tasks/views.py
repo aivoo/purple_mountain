@@ -34,7 +34,7 @@ ENCODE_LIST = {
 
 
 def index(request):
-    tasklist = TaskList.objects.all()
+    tasklist = TaskList.objects.filter(exist=True)
     return render(request, 'tasks/index.html', {'tasklist': tasklist})
 
 
@@ -60,17 +60,11 @@ def article_one(request, pk):
     return render(request, 'tasks/article_one.html', {'item': art_one})
 
 
-def tutorial_list(request):
-    tutorials = Tutorial.objects.filter(exist=True)
-
-    return render(request, 'tasks/tutorial_list.html', {'items': tutorials})
-
-
-def text_encode(num):
+def text_encode(num): # 用于数字图片的加密
     return ''.join(ENCODE_LIST[i] for i in str(num))
 
 
-def web_encode(num):
+def web_encode(num): # 用于前端加密
     today = datetime.date.today()
     day = today.day
     month = today.month
@@ -85,20 +79,45 @@ def web_encode(num):
     return num_encode, join_str, num_list
 
 
-def tutorial_one(request, pk):
+def judge_ua_host(request): # 判断是否有 UA 或者 host
     meta = request.META
     user_agent = meta.get('HTTP_USER_AGENT')
     host = meta.get('HTTP_HOST')
-    # print(request.META, request.path)
+    real_host = request.build_absolute_uri('/').split('//')[1][:-1]
 
-    if not user_agent or not host: # 如果没有 ua 或者 host
-        return HttpResponse(status=403)
+    # print("request.build_absolute_uri('/')", request.build_absolute_uri('/'))
+    # print('request.META: ', meta)
+    # print('user_agent: ', user_agent)
+    # print('host: ', host)
+    # print('real_host: ', real_host)
+
+    if not user_agent or host != real_host: # 如果没有 ua 或者 host 不符
+        return HttpResponse('非正常请求', status=403)
 
     for ua in UA_LIST: # 如果 ua 不符合要求
         if ua in user_agent:
             break
     else:
-        return HttpResponse(status=403)
+        return HttpResponse('非正常请求', status=403)
+
+
+def tutorial_list(request):
+
+    response = judge_ua_host(request)
+    if response:
+        return response
+
+    tutorials = Tutorial.objects.filter(exist=True)
+
+    return render(request, 'tasks/tutorial_list.html', {'items': tutorials})
+
+
+def tutorial_one(request, pk):
+
+    response = judge_ua_host(request)
+
+    if response:
+        return response
 
     if not request.user.is_authenticated and pk > 11: # 未登录状态只能查看前几课内容
         return render(request, 'registration/login.html', {})
@@ -128,18 +147,10 @@ def tutorial_one(request, pk):
 
 
 def tutorial_new(request):
-    meta = request.META
-    user_agent = meta.get('HTTP_USER_AGENT')
-    host = meta.get('HTTP_HOST')
 
-    if not user_agent or not host: # 如果没有 ua 或者 host
-        return HttpResponse(status=403)
-
-    for ua in UA_LIST: # 如果 ua 不符合要求
-        if ua in user_agent:
-            break
-    else:
-        return HttpResponse(status=403)
+    response = judge_ua_host(request)
+    if response:
+        return response
 
     if not request.user.is_authenticated:  # 未登录状态需要先登录
         return render(request, 'registration/login.html', {})
@@ -147,7 +158,7 @@ def tutorial_new(request):
     if request.method == "POST":
         print('start post')
         form = PostForm(request.POST)
-        print('form:', form, form.is_valid())
+        # print('form:', form, form.is_valid())
         if form.is_valid():
             post = form.save(commit=False)
             post.save()

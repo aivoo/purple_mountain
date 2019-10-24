@@ -9,8 +9,8 @@
 
     <script>
         var readcount = '{{ readcount }}';
-        var join_str = '{{ join_str }}'
-        var num_list = '{{ num_list }}'
+        var join_str = '{{ join_str }}';
+        var num_list = '{{ num_list }}';
     </script>
 
     <script src="{% static 'tasks/js/tutorial.js' %}"></script>
@@ -46,11 +46,11 @@
                         <li class="previous">{% if last %}<a href="../{{last.id}}"><span aria-hidden="true">&larr;</span> {{last.index}}.{{last.title}}</a>{% endif %}</li>
                         <li><a href="../list">返回首页</a></li>
                         <li class="next">{% if next %}<a href="../{{next.id}}">{{next.index}}.{{next.title}} <span aria-hidden="true">&rarr;</span></a>{% endif %}</li>
+                        <script>$("#try-it").replaceWith(str_end)</script>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2"></div>
         </div>
     </div>
-    <script>$("#try-it").replaceWith(str_end)</script>
 {% endblock %}
