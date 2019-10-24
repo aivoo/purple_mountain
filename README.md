@@ -14,10 +14,10 @@
 2. （可选）新建一个虚拟环境，在虚拟环境中完成步骤 3 和 4；
 3. 通过 pip install Django==2.1.5，pip install django-tinymce4-lite==1.7.5 安装必须的第三方库；
 4. 在命令提示符中，进入项目主目录（文件夹 web_crawler_task/ 中），通过 python manage.py runserver 运行项目，如果看到类似下图的界面，说明项目运行成功；
-![Intro 1](intro_image\intro1.png)
+![Intro 1](.\intro_image\intro1.png)
 
 5. 项目运行成功后，在浏览器中打开网址：http://127.0.0.1:8000/，看到如下图的网页，就可以按照关卡任务，开始爬虫抓取练习；
-![Intro 2](intro_image\intro2.png)
+![Intro 2](.\intro_image\intro2.png)
 
 #### 任务说明
 共分十一个任务，分别是：
