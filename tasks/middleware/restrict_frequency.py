@@ -22,6 +22,8 @@ class Md1(MiddlewareMixin):
 
             host = request.META.get('REMOTE_ADDR')
 
+            # print('host', host)
+
             ret, created = HostInfo.objects.get_or_create(host=host)
 
             if not created:

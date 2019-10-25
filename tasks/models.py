@@ -52,7 +52,7 @@ class HostInfo(models.Model):
 class TaskList(models.Model):
     title = models.CharField('标题', max_length=100)
     index = models.IntegerField('序号', unique=True)
-    content = models.TextField('内容')
+    content = HTMLField('内容')
     url = models.CharField('url', max_length=100)
     exist = models.BooleanField('是否存在', default=True)
 
