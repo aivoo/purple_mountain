@@ -204,19 +204,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 </code></pre>
  <p>
   若要为我们的博客创建一个数据库，，让我们运行以下命令在控制台中：
-  <code>
-   python manage.py migrate
-  </code>
+  <code> python manage.py migrate </code>
   （我们需要
-  <code>
-   djangogirls
-  </code>
+  <code> djangogirls </code>
   目录中包含
-  <code>
-   manage.py
-  </code>
-  文件）。 如果一切顺利，您应该看到这样：
- </p>
+  <code> manage.py </code>
+  文件）。</p>
+ <p>如果运行过程中出现如下类似错误：</p>
+  <pre><code>(myvenv) ~/djangogirls$ python manage.py migrate
+   ...
+   ...
+   from _sqlite3 import *
+   ImportError: DLL load failed: The specified module could not be found.
+  </code></pre>
+ <p>那很可能是由于你没有安装 <code> sqlite </code> 数据库导致的。需要进入 <code> sqlite </code>下载页面：<a href="https://www.sqlite.org/download.html" target="_blank">https://www.sqlite.org/download.html</a> ，选择与自己操作系统的相符的安装包并下载安装。windows 系统下载安装参考：<a href="https://blog.csdn.net/ght886/article/details/83791355" target="_blank">https://blog.csdn.net/ght886/article/details/83791355</a>
+  </p>
+
+ <p>如果你已经装过 <code> anaconda </code> 还出现了上述的报错，则很有可能是漏掉安装 <code> sqlite </code> 的 <code> dll </code> 导致的，可以这样解决：<a href="https://blog.csdn.net/zhxdick/article/details/87708663" target="_blank">https://blog.csdn.net/zhxdick/article/details/87708663</a></p>
+
+ <p>如果一切顺利，您应该看到这样：</p>
  <pre><code>(myvenv) ~/djangogirls$ python manage.py migrate
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
