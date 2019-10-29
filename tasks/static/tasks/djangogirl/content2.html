@@ -50,11 +50,7 @@
   <code>
    C:\Users\Name
   </code>
-  （其中
-  <code>
-   Name
-  </code>
-  是您的登录名）。
+  <strong>（其中 <code> Name </code> 是您的操作系统的用户名）。</strong>
  </p>
  <p>
   在本教程中我们将使用您的 home 目录下的一个新目录
@@ -79,32 +75,30 @@ cd djangogirls
   Windows系统
  </h3>
  <p>
-  若要创建新的
-  <code>
-   虚拟环境
-  </code>
-  ，您需要打开的控制台 （我们在前几章里已经告诉过你了，还记得吗？），然后运行
+  若要创建新的 <code> 虚拟环境 </code>，需要先打开控制台，打开后如下图所示：
+  </p>
+  <p><img alt="django目录" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv0.png" style="width: 80%;"/></p>
+  <p>
+   <br />
+  我们决定把虚拟环境和之后的项目都放在一个叫做 <code> djangogirls </code> 的文件夹中。试着通过 <code> cd djangogirls </code> 进入这个叫做 <code> djangogirls </code> 的文件夹，在其中完成你接下来虚拟环境的创建（如果对命令行的操作还不熟悉，可以先去看看这个：<a href="https://python666.cn/cls/lesson/21/" target="_blank">【Python 第20课】命令行常用命令</a>）。
+  </p>
+  <p>第一次进入 <code> djangogirls </code> 文件夹时会失败，因为你还没有 <code> djangogirls </code> 这个文件夹，所以首先需要通过 <code> mkdir djangogirls </code> 新建这样一个文件夹，然后再 <code> cd djangogirls </code> 进入 <code> C:\Users\<strong>Name</strong>\djangogirls </code><strong>（其中 <code> Name </code> 是你的 windows 系统的用户名）</strong>，下次打开控制台后，就可以直接通过 <code> cd djangogirls </code> 进入，不用再次新建文件夹了。
+  </p>
+  <p><img alt="django目录" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv1.png" style="width: 60%;"/></p>
+ <br />
+  <p>进入后，运行
   <code>
    C:\Python36\python -m venv myvenv
   </code>
-  。 它看起来会像这样：
+  。 它看起来会像这样<strong>（其中 <code> Name </code> 是你的 windows 系统的用户名）</strong>：
  </p>
- <pre><code>C:\Users\Name\djangogirls&gt; C:\Python36\python -m venv myvenv
+ <pre><code>C:\Users\<strong>Name</strong>\djangogirls&gt; C:\Python36\python -m venv myvenv
 </code></pre>
- <p>
-  <code>
-   C:\Python34
-  </code>
-  是您之前安装Python的目录，
-  <code>
-   myvenv
-  </code>
-  是您
-  <code>
-   虚拟环境
-  </code>
-  的名字。 你可以使用其他任何名字，但请坚持使用小写，并不要使用空格、重音符号或特殊字符。 始终保持名称短小是个好主意 — — 你会大量引用它 ！
- </p>
+ <p><strong>注意：</strong></p>
+ <p>1、<code> C:\Python36 </code>是您之前安装 Python 的目录，你需要将其换成你自己的 python 所在目录，如果你已经将 python 添加进了<code>环境变量</code>，那么可以直接运行：<code>python -m venv myvenv</code></p>
+ <p>2、<code> myvenv </code>是你 <code> 虚拟环境 </code> 的名字。 你可以使用其他任何名字，但请坚持使用小写，并不要使用空格、重音符号或特殊字符。 始终保持名称短小是个好主意 — — 你会大量引用它 ！</p>
+ <p><img alt="django目录" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv2.png" style="width: 60%;"/></p>
+ <br /><br />
  <h3 id="linux-和-os-x">
   Linux 和 OS X
  </h3>
@@ -169,6 +163,8 @@ cd djangogirls
  </p>
  <pre><code>C:\Users\Name\djangogirls&gt; myvenv\Scripts\activate
 </code></pre>
+  <p><img alt="使用venv" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv3.png" style="width: 80%;"/></p>
+ <br/>
  <h4 id="linux-和-os-x">
   Linux 和 OS X
  </h4>
@@ -202,13 +198,7 @@ cd djangogirls
   <pre><code>~/djangogirls$ . myvenv/bin/activate
 </code></pre>
  </blockquote>
- <p>
-  当你看到在您的控制台中有如下提示就知道你已经进入
-  <code>
-   虚拟环境
-  </code>
-  ：
- </p>
+ <p>当你看到在您的控制台中有如下提示就知道你已经进入 <code> 虚拟环境 </code> ：</p>
  <pre><code>(myvenv) C:\Users\Name\djangogirls&gt;
 </code></pre>
  <p>
@@ -223,6 +213,7 @@ cd djangogirls
   </code>
   前缀的出现 ！
  </p>
+ <p><img alt="使用venv" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv4.png" style="width: 80%;"/></p>
  <p>
   当在一个虚拟的环境中工作时，
   <code>
@@ -285,6 +276,8 @@ Cleaning up...
    ）。 在移动之后，请重试上面的命令。
   </p>
  </blockquote>
+ <p><img alt="使用venv" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv5.png" style="width: 80%;"/></p>
+ <br/>
  <p>
   在 Linux 上
  </p>
