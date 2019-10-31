@@ -246,7 +246,7 @@ cd djangogirls
   </code>
   安装 Django 。在控制台中，运行
   <code>
-   pip install django==2.1
+   pip install django
   </code>
   （注意我们使用双等于号：
   <code>
@@ -254,15 +254,16 @@ cd djangogirls
   </code>
   ).
  </p>
- <pre><code>(myvenv) ~$ pip install django==2.1
-Downloading/unpacking django==2.1
-Installing collected packages: django pytz
-Successfully installed django-2.1 pytz-2019.2
-Cleaning up...
-</code></pre>
  <p>
-  在 Windows 上
+  <strong>在 Windows 上</strong>（其中 <code>Name</code> 是你的 windows 系统的用户名）
  </p>
+ <pre><code>(myvenv) C:\Users\<strong>Name</strong>\djangogirls> pip install django
+Collecting django
+Downloading ...
+...
+Installing collected packages: sqlparse, pytz, django
+Successfully installed django-2.2.6 pytz-2019.3 sqlparse-0.3.0
+</code></pre>
  <blockquote>
   <p>
    如果你在 Windows 平台上调用 pip 时得到一个错误，请检查是否您项目的路径名是否包含空格、 重音符号或特殊字符 (如：
@@ -276,11 +277,16 @@ Cleaning up...
    ）。 在移动之后，请重试上面的命令。
   </p>
  </blockquote>
- <p><img alt="使用venv" src="https://cdn.py2china.cn/study-group/djangogirl/part1/creat_venv5.png" style="width: 80%;"/></p>
+ <p>安装成功后如下图所示：</p>
+ <p><img alt="使用venv" src="https://cdn.py2china.cn/study-group/djangogirl/update/1.png" style="width: 80%;"/></p>
  <br/>
- <p>
-  在 Linux 上
- </p>
+ <p><strong>在 Linux 上</strong></p>
+  <pre><code>(myvenv) ~$ pip install django
+Collecting django
+Downloading ...
+...
+Successfully installed ...
+</code></pre>
  <blockquote>
   <p>
    如果你在Ubuntu 12.04上得到一个错误，请运行

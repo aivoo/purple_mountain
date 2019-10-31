@@ -649,7 +649,7 @@ urlpatterns = [
   </p>
  </blockquote>
  <p>
-  <img alt="记录错误" src="https://cdn.py2china.cn/study-group/djangogirl/part3/nouser.png" style="width: 100%;"/>
+  <img alt="记录错误" src="https://cdn.py2china.cn/study-group/djangogirl/update/nouser.png" style="width: 100%;"/>
  </p>
  <h2 id="编辑表单">
   编辑表单
@@ -821,15 +821,20 @@ urlpatterns = [
         <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{% url 'post_new' %}"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"top-menu"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"glyphicon glyphicon-plus"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     {% endif %}
 </code></pre>
- <p>
-  这个
-  <code>
-   {% if %}
-  </code>
-  会使得链接仅仅发送到哪些已经登陆的用户的浏览器。 这并不能完全保护发布新文章，不过这是很好的第一步。 我们将在扩展课程中包含更多安全部分。
+ <p>这个<code> {% if %} </code>会使得链接仅仅发送到哪些已经登陆的用户的浏览器。 这并不能完全保护发布新文章，不过这是很好的第一步。 我们将在扩展课程中包含更多安全部分。
  </p>
+ <p>还记得我们在详细页面中的编辑按钮吗？我们对这个按钮也做相同的处理，这样其他人就没有办法编辑我们的文章了。</p>
+ <p>在编辑器中打开<code> blog/templates/blog/post_detail.html </code> 并且找到下面这一行代码：</p>
+
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{% url 'post_edit' pk=post.pk %}"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"glyphicon glyphicon-pencil"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+  <p>把它修改为：</p>
+<pre><code class="lang-html">{% if user.is_authenticated %}
+     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-default"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{% url 'post_edit' pk=post.pk %}"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"glyphicon glyphicon-pencil"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+{% endif %}
+</code></pre>
  <p>
-  你应已登录，如果你刷新页面，你不会看到有什么不同。不过，在新的浏览器或隐身窗口中加载页，你会看不到这个链接!
+  你应已登录，如果你刷新页面，你不会看到有什么不同。不过，在新的浏览器或隐身窗口中加载页，你会看不到新增和编辑的链接!
  </p>
  <h2 id="还有一件事：部署时刻！">
   还有一件事：部署时刻！
