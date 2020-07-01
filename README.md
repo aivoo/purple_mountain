@@ -1,4 +1,8 @@
-## 爬虫练习
+## “紫金山”爬虫练习网站
+
+#### 来源
+
+Crossin的编程教室
 
 #### 运行环境
 
@@ -55,9 +59,13 @@
 #### 参数修改
 
 * tasks/middleware/restrict_frequency.py 的开头位置，包括了每次访问需要间隔的时间、规定时间内可以访问的次数和封 IP 的封禁时长，可以根据需要修改；
-
 * tasks/views.py 中，变量 UA_LIST 包括了被验证的 user-agent，可以根据需要修改；
-
 * tasks/views.py 中的变量 ENCODE_LIST 在关卡 数字图片 中被用到，需要配合前端的字体文件一起修改；
-
 * tasks/views.py 中的函数 web_encode()，包括了关卡 前端加密 中需要用到的参数，可以配合前端 JS 代码共同修改。
+
+#### 微信公众号
+
+更多实用而有趣的分析案例请关注：**Crossin的编程教室**
+
+![Crossin的编程教室.jpg](Crossin的编程教室.jpg)
+
